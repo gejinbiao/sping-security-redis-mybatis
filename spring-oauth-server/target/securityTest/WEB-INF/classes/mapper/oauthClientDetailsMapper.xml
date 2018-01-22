@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gjb.shiroTest.dao.OauthClientDetailsMapper">
+
+
+	<!--
+	 private String clientId;
+
+    private String clientSecret;
+
+    private String scope;
+
+    private String resourceIds;
+
+    private String authorizedGrantTypes;
+
+    private String registeredRedirectUris;
+
+    private String autoApproveScopes;
+
+    private String authorities;
+
+    	clientId,
+	clientSecret,
+	resourceIds,
+	scope,
+	authorizedGrantTypes,
+	authorities,
+	autoApproveScopes
+	-->
+    <sql id="clientColumns">
+       	client_id clientId,
+	client_secret clientSecret,
+	resource_ids resourceIds,
+	scope scope,
+	authorized_grant_types authorizedGrantTypes,
+	web_server_redirect_uri,
+	authorities authorities,
+	access_token_validity,
+	refresh_token_validity,
+	additional_information,
+	autoapprove autoApproveScopes
+    </sql>
+
+    <!--根据clientid查询-->
+    <select id="loadClientByClientId" parameterType="string" resultType="com.gjb.shiroTest.entity.Client">
+      select
+      <include refid="clientColumns"/>
+      from oauth_client_details
+        where client_id = #{clientId}
+        and archived = 0
+    </select>
+
+</mapper>

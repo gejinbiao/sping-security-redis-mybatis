@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gjb.shiroTest.dao.PrivilegeMapper">
+
+
+
+    <!--基础字段-->
+    <sql id="baseColumns">
+        a.user_id AS id,
+        a.privilege AS privilege
+    </sql>
+
+    <!--查询用户-->
+    <select id="findPrivileges" parameterType="int" resultType="com.gjb.shiroTest.entity.PrivilegeEntity">
+        select
+          <include refid="baseColumns"/>
+        from user_privilege a
+        where
+        user_id = #{userName}
+    </select>
+
+</mapper>

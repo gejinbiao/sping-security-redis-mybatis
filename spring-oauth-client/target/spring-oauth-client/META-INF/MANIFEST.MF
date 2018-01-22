@@ -1,0 +1,8 @@
+Manifest-Version: 1.0
+Implementation-Title: spring-oauth-client
+Implementation-Version: 1.0
+Built-By: Administrator
+Implementation-BuildNumber: 1.0
+Created-By: IntelliJ IDEA
+Build-Jdk: 1.7.0_79
+

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gjb.shiroTest.dao.UserMapper">
+
+  <!--  <resultMap id="clientResult" type="com.gjb.shiroTest.entity.Client">
+        <id property="id" column="id" />
+        <result property="clientName" column="client_name" />
+        <result property="clientId" column="client_id" />
+        <result property="clientSecret" column="client_secret" />
+    </resultMap>-->
+
+    <!--基础字段-->
+    <sql id="baseColumns">
+        a.id AS id,
+        a.guid AS guid,
+        a.create_time AS createTime,
+        a.archived AS archived,
+        a.email AS email,
+        a.password AS password,
+        a.phone AS phone,
+        a.username AS userName,
+        a.default_user AS defaultUser,
+        a.last_login_time AS lastLoginTime
+    </sql>
+
+    <!--查询用户-->
+    <select id="findByUsername" parameterType="string" resultType="com.gjb.shiroTest.entity.User">
+        select
+          <include refid="baseColumns"/>
+        from user a
+        where
+        username = #{userName}
+        and archived = 0
+    </select>
+
+</mapper>
